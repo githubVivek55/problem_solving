@@ -1,13 +1,29 @@
 package com.vwake.problems;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MinimumPlatforms {
     public static void main(String[] args) {
-        int[] arr = {900, 1100, 1235};
-        int[] dep = {1000, 1200, 1240};
+//        Path path = Paths.get("files/minimumPlatforms.txt");
+//        try(Stream<String> lines = Files.lines(path);){
+//            List<String> collect = lines.skip(1).flatMap(line -> Pattern.compile(" ").splitAsStream(line)).collect(Collectors.toList());
+//            System.out.println(collect.size());
+//            //Long[] arr1 = collect.subList(0,collect.size()/2).toArray(Long[]::new);
+//            Long[] dep1 = collect.subList(collect.size()/2, collect.size()).toArray(Long[]::new);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+        int[] arr = {900, 940, 950, 1100, 1500, 1800};
+        int[] dep = {910, 1200, 1120, 1130, 1900, 2000};
+
 
         int res = findPlatform(arr, dep, arr.length);
         System.out.println("Result=" + res);
@@ -16,25 +32,21 @@ public class MinimumPlatforms {
     }
 
     static int findPlatform(int arr[], int dep[], int n) {
-        HashMap<Integer,Integer> platform = new HashMap<>();
-        platform.put(1,dep[0]);
-        for(int i=1;i<n;i++){
-            checkEmptyPlatform(platform, arr[i], dep[i]);
-        }
-        return platform.size();
-    }
-    static void checkEmptyPlatform(Map<Integer,Integer> map,int arr,int dep){
-        int platform = -1;
-        for(Map.Entry e: map.entrySet()){
-            int t = (int)e.getValue();
-            if(t<=arr){
-                platform=(int)e.getKey();
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+        int count=1;
+        for (int i=1 , j=0;i<arr.length;){
+            if (arr[i]>dep[j]){
+                i++;
+                j++;
+                continue;
+            }
+            else{
+                i++;
+                count++;
             }
         }
-        if(platform==-1){
-            map.put(map.size()+1,dep);
-        }else{
-            map.put(platform,dep);
-        }
+        return count;
     }
+
 }

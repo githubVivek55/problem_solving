@@ -24,22 +24,29 @@ public class SpiralTraversal {
         Stack<Node> s1 = new Stack<>();
         Stack<Node> s2 = new Stack<>();
         s1.push(queue.poll());
-        while (!s1.empty()) {
+        while (!s1.empty()||!s2.empty()) {
             int size1 = s1.size();
             for (int i = 0; i < size1; i++) {
                 Node n = s1.pop();
-                if(n==null){
+                if (n == null) {
                     break;
                 }
-                Optional.of(n).ifPresent((k)->res.add(k.value));
-                if (level % 2 == 0) {
-                    Optional.of(n).ifPresent((t) -> s1.push(t.left));
-                    Optional.of(n).ifPresent((t) -> s1.push(t.right));
-                } else {
-                    Optional.of(n).ifPresent((t) -> s1.push(t.right));
-                    Optional.of(n).ifPresent((t) -> s1.push(t.left));
-                }
+
+                Optional.of(n).ifPresent((k) -> res.add(k.value));
+                Optional.of(n).ifPresent((t) -> s2.push(t.right));
+                Optional.of(n).ifPresent((t) -> s2.push(t.left));
             }
+            int size2 = s2.size();
+            for (int i = 0; i < size2; i++) {
+                Node n = s2.pop();
+                if (n == null) {
+                    break;
+                }
+                Optional.of(n).ifPresent((k) -> res.add(k.value));
+                Optional.of(n).ifPresent((t) -> s1.push(t.left));
+                Optional.of(n).ifPresent((t) -> s1.push(t.right));
+            }
+
             level++;
         }
     }

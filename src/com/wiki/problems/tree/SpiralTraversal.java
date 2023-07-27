@@ -3,6 +3,9 @@ package com.wiki.problems.tree;
 import java.util.*;
 
 public class SpiralTraversal {
+    static ArrayList<Integer> list = new ArrayList<Integer>();
+    static Stack<Node> st1 = new Stack<>();
+    static Stack<Node> st2 = new Stack<>();
     public static void main(String[] args) {
         Node root = new Node(10);
         root.left = new Node(8);
@@ -12,42 +15,40 @@ public class SpiralTraversal {
         root.right.left = new Node(11);
         root.right.right = new Node(13);
         BinaryTree tree = new BinaryTree(root);
-        Queue<Node> queue = new ArrayDeque<>();
-        ArrayList<Integer> res = new ArrayList<>();
-        queue.add(root);
-        spiralOrder(queue, res);
-        System.out.println(res);
+        findSpiral(root);
+    }
+    static ArrayList<Integer> findSpiral(Node root)
+    {
+        st1.add(root);
+        while(!st1.isEmpty() || !st2.isEmpty()){
+            while(!st1.isEmpty()){
+                Node curnode = st1.pop();
+                list.add(curnode.value);
+                RightToleft(curnode);
+            }
+            while(!st2.isEmpty()){
+                Node curnode = st2.pop();
+                list.add(curnode.value);
+                leftToRight(curnode);
+            }
+        }
+        return list;
+    }
+    static void leftToRight(Node curnode){
+        if(curnode.left!=null){
+            st1.add(curnode.left);
+        }
+        if(curnode.right!=null){
+            st1.add(curnode.right);
+        }
     }
 
-    public static void spiralOrder(Queue<Node> queue, ArrayList<Integer> res) {
-        int level = 1;
-        Stack<Node> s1 = new Stack<>();
-        Stack<Node> s2 = new Stack<>();
-        s1.push(queue.poll());
-        while (!s1.empty()||!s2.empty()) {
-            int size1 = s1.size();
-            for (int i = 0; i < size1; i++) {
-                Node n = s1.pop();
-                if (n == null) {
-                    break;
-                }
-
-                Optional.of(n).ifPresent((k) -> res.add(k.value));
-                Optional.of(n).ifPresent((t) -> s2.push(t.right));
-                Optional.of(n).ifPresent((t) -> s2.push(t.left));
-            }
-            int size2 = s2.size();
-            for (int i = 0; i < size2; i++) {
-                Node n = s2.pop();
-                if (n == null) {
-                    break;
-                }
-                Optional.of(n).ifPresent((k) -> res.add(k.value));
-                Optional.of(n).ifPresent((t) -> s1.push(t.left));
-                Optional.of(n).ifPresent((t) -> s1.push(t.right));
-            }
-
-            level++;
+    static void RightToleft(Node curnode){
+        if(curnode.right!=null){
+            st2.add(curnode.right);
+        }
+        if(curnode.left!=null){
+            st2.add(curnode.left);
         }
     }
 }

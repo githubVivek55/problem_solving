@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class LowestCommonAncestor {
     public static void main(String[] args) {
-        Node root = new Node(2);
-        root.left = new Node(1);
-        root.right = new Node(3);
+            Node root = new Node(2);
+            root.left = new Node(1);
+            root.right = new Node(3);
         int n1 = 1, n2 = 3;
         ArrayList<Node> res1 = new ArrayList<>();
         ArrayList<Node> res2 = new ArrayList<>();

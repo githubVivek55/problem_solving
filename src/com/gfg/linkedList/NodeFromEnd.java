@@ -9,16 +9,16 @@ public class NodeFromEnd {
         n2.next = n3;
         n3.next = new Node(5);
 
-        Node ans = new Node(-1);
-        int n = getNode(head,3,ans);
-    }
-    public static int getNode(Node node, int k, Node ans){
-        if(node==null){
-            return 0;
+        Node curr = head;
+        int c = 0;
+        int n =5;
+        while(curr!=null){
+            c++;
+            curr = curr.next;
         }
-        int sum = 1+getNode(node.next,k,ans);
-        System.out.println(node.data+"-"+sum);
-
-        return sum;
+        for(int i=0;i<(c-n);i++){
+            head = head.next;
+        }
+        System.out.println(head.data);
     }
 }

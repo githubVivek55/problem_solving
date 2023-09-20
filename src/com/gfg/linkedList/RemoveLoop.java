@@ -17,29 +17,45 @@ public class RemoveLoop {
     }
 
     public static void hashSolution(Node head){
-
-    }
-    public static void detectLoop(Node node){
-        Node slow = node,fast = node;
-        while(slow!=null && fast!=null && fast.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
-            if(slow==fast){
-                removeLoop(node,slow);
-                return;
+        HashSet<Node> hash = new HashSet<>();
+        Node prev = null;
+        while (head!=null){
+            if(hash.contains(head)){
+                prev.next=null;
+            }else{
+                hash.add(head);
+                prev=head;
+                head = head.next;
             }
         }
     }
-    public static void removeLoop(Node head,Node slow){
-        Node p1 = head;
-        Node p2 = slow;
-        int k=1;
-        Node prev = p1;
-        while (p1.next !=p2){
-            prev = p1;
-            p1 = p1.next;
-            k++;
+    public static void detectLoop(Node node){
+        Node slow =head;
+        Node fast = head;
+        while(fast!= null && fast.next!= null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast)
+            {
+                //  detected loop forming node;
+                slow =head;
+                while(slow!= fast)
+                {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                // tracking previous node of loop forming
+                while(fast.next != slow)
+                {
+                    fast = fast.next;
+                }
+                // removing loop
+                fast.next =null;
+                return;
+            }
         }
-        prev.next = null;
+        return ;
     }
+
 }

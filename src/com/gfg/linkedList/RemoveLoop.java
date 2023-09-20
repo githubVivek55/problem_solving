@@ -29,7 +29,7 @@ public class RemoveLoop {
             }
         }
     }
-    public static void detectLoop(Node node){
+    public static void detectLoop(Node head){
         Node slow =head;
         Node fast = head;
         while(fast!= null && fast.next!= null)
@@ -38,14 +38,13 @@ public class RemoveLoop {
             fast = fast.next.next;
             if(slow == fast)
             {
-                //  detected loop forming node;
                 slow =head;
                 while(slow!= fast)
                 {
                     slow = slow.next;
                     fast = fast.next;
                 }
-                // tracking previous node of loop forming
+
                 while(fast.next != slow)
                 {
                     fast = fast.next;

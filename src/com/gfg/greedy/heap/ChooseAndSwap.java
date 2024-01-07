@@ -6,6 +6,15 @@ public class ChooseAndSwap {
     public static void main(String[] args) {
         String A = "abcdefgih";
 
+        Object arr[]={
+                new Integer(1),
+                new String("foo"),
+        };
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++){
+            System.out.println(arr[i].toString());
+        }
+
         char []str = A.toCharArray();
         int MAX = 26,i=0,j=0;
         int n = A.length();

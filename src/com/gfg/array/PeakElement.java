@@ -7,23 +7,29 @@ public class PeakElement {
     }
 
     public static int peakElement(int[] arr, int n) {
-        int j = -1, k = 1;
-        if(n==1){
-            return 0;
+        if( n == 1) return 0;
+        if(arr[0] > arr[1]) return 0;
+        if(arr[n-1] > arr[n-2]) return n-1;
+
+        int   low = 1;
+        int high = n-2;
+        while(low<=high){
+            int mid = (low+high)/2;
+
+            if(arr[mid]>arr[mid-1] && arr[mid]>=arr[mid+1]){
+                return mid;
+            }
+            else if (arr[mid-1] < arr[mid]){
+                low = mid+1;
+            }
+            else if (arr[mid+1] <= arr[mid]){
+                high = mid-1;
+            }
+            else{
+                low = mid+1;
+            }
         }
 
-        for (int i = 0; i < n; i++) {
-            if (j == -1 && arr[i] > arr[k]) {
-                return i;
-            } else if (k == n && arr[i] > arr[j]) {
-                return i;
-            } else if (i > 0 && k < n) {
-                if (arr[i] > arr[j] && arr[i] > arr[k])
-                    return i;
-            }
-            j++;
-            k++;
-        }
-        return n-1;
+        return 0;
     }
 }

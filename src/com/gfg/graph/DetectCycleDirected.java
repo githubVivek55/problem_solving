@@ -1,8 +1,7 @@
 package com.gfg.graph;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetectCycleDirected {
     public static void main(String[] args) {

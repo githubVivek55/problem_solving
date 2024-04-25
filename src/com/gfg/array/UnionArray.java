@@ -6,7 +6,7 @@ public class UnionArray {
         int[] arr2 = {1,2,3};
         System.out.println(doUnion(arr1,arr1.length,arr2,arr2.length));
     }
-    public static int doUnion(int a[], int n, int b[], int m)
+    public static int doUnion(int[] a, int n, int[] b, int m)
     {
         int max = Integer.MIN_VALUE;
         for(int i: a){

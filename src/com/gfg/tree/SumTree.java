@@ -41,6 +41,6 @@ public class SumTree {
         if(leftsum+rightsum ==node.data){
             return node.data + getSum(node.left)+getSum(node.right);
         }
-        return -1;
+        return Integer.MIN_VALUE;
     }
 }

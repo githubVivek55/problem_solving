@@ -4,10 +4,15 @@ public class Node {
     public Node left;
     public Node right;
 
+
     public Node(Node left, Node right, int data) {
         this.left = left;
         this.right = right;
         this.data = data;
+    }
+    public Node(int data){
+        this.data = data;
+        left=right=null;
     }
 
     public Node getLeft() {

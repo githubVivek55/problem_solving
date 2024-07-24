@@ -1,12 +1,10 @@
 package com.gfg.linkedList;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class FlattenList {
     public static void main(String[] args) {
-
+        Node root;
+        root = new Node(5);
+        flatten(root);
     }
 
     public static Node flatten(Node root) {

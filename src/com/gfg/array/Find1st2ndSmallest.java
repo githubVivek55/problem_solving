@@ -14,15 +14,15 @@ public class Find1st2ndSmallest {
             return new int[]{-1};
         }
         int min = Integer.MAX_VALUE;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]<min){
-                min=arr[i];
+        for (int j : arr) {
+            if (j < min) {
+                min = j;
             }
         }
         int min2 = Integer.MAX_VALUE;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]<min2 && arr[i]!=min){
-                min2=arr[i];
+        for (int j : arr) {
+            if (j < min2 && j != min) {
+                min2 = j;
             }
         }
         if(min2==min || min2==Integer.MAX_VALUE){

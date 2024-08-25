@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BTreeToDll {
-    static Node head,prev;
     public static void main(String[] args) {
         Node root = new Node(10);
         Node l1 = new Node(20);

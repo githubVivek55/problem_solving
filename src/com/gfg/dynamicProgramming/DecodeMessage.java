@@ -27,7 +27,7 @@ int[] dp = new int[str.length()];
         if(str.charAt(i)=='0'){
             return 0;
         }
-        int a=0,b=0;
+        int a,b=0;
         a = traverse(str,i+1,n,dp);
         if(i!=n-1 && (str.charAt(i)=='1' || (str.charAt(i)=='2' && str.charAt(i+1)<='6'))){
             b = traverse(str,i+2,n,dp);

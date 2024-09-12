@@ -5,8 +5,6 @@ import java.util.Arrays;
 public class SegregateZeroOnes {
     public static void main(String[] args) {
         int[] arr = {0, 0, 0, 0};
-
-
         segregate0and1(arr);
         Arrays.stream(arr).forEach(System.out::println);
     }

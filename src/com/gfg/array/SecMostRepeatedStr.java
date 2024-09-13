@@ -1,10 +1,8 @@
 package com.gfg.array;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class SecMostRepeatedStr {
     public static void main(String[] args) {

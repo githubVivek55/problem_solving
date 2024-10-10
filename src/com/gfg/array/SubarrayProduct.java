@@ -1,11 +1,9 @@
 package com.gfg.array;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.function.Function;
 
 public class SubarrayProduct {
     public static void main(String[] args) throws IOException {
@@ -37,12 +35,12 @@ public class SubarrayProduct {
                    4    =3-3+1 = 1
          */
         while (i < n) {
-            mul*=a[i];
-            while (j<=i && mul>=k){
-                mul/=a[j];
+            mul *= a[i];
+            while (j <= i && mul >= k) {
+                mul /= a[j];
                 j++;
             }
-            count += (i-j)+1;
+            count += (i - j) + 1;
             i++;
         }
         return count;

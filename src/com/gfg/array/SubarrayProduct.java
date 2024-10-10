@@ -11,7 +11,7 @@ public class SubarrayProduct {
         Path path = Path.of("D:/dev/java_workspace/play_ground/files/arrProd.txt");
         String s = Files.readString(path);
         long[] arr2 = Arrays.stream(s.split(" "))
-                .mapToLong(i -> Long.parseLong(i)).toArray();
+                .mapToLong(Long::parseLong).toArray();
 //        Arrays.stream(arr2).boxed().forEach(System.out::println);
         long l = countSubArrayProductLessThanK(arr, arr.length, 10);
         System.out.println(l);

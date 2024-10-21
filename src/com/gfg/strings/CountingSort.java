@@ -1,7 +1,5 @@
 package com.gfg.strings;
 
-import java.util.Arrays;
-
 public class CountingSort {
     public static void main(String[] args) {
         String input = "uwvlyhdrxbvyhygmcaszlp";
@@ -36,9 +34,9 @@ public class CountingSort {
             res[val-1] = arr.charAt(i);
             count_Arr[index-96] = val-1;
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(char ch: res)
-            result+=ch;
-        return result;
+            result.append(ch);
+        return result.toString();
     }
 }

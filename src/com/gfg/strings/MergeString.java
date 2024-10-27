@@ -9,7 +9,7 @@ public class MergeString {
     }
 
     public static String merge(String S1, String S2) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int i = 0, j = 0;
 
         while (i < S1.length() && j < S2.length()) {

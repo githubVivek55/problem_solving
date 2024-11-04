@@ -2,7 +2,6 @@ package com.gfg.easy;
 
 public class BinarySearchInForest {
     public static void main(String[] args) {
-        int n = 5, k = 6;
         int[] tree = {2, 3, 5, 2, 4};
         int height = find_height(tree, tree.length, 6);
         System.out.println(height);

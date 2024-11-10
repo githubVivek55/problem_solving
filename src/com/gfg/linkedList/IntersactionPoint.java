@@ -7,10 +7,10 @@ import java.util.Stack;
 public class IntersactionPoint {
 
     public static class MyStack<T> {
-        private T[] stack = null;
+        private T[] stack;
         int pointer = 0;
 
-        public MyStack(Class<T> t) {
+        public MyStack() {
             stack = (T[]) new Object[10];
         }
 
@@ -26,9 +26,7 @@ public class IntersactionPoint {
         }
 
         public boolean isEmpty() {
-            if (pointer == 0)
-                return true;
-            return false;
+            return pointer == 0;
         }
 
         public T peek() {
@@ -106,8 +104,8 @@ public class IntersactionPoint {
     }
 
     static int intersectionPointSolution2(Node head1, Node head2){
-        MyStack<Node> stack1 = new MyStack<>(Node.class);
-        MyStack<Node> stack2 = new MyStack<>(Node.class);
+        MyStack<Node> stack1 = new MyStack<>();
+        MyStack<Node> stack2 = new MyStack<>();
         Node curr = head1;
         while (curr != null) {
             stack1.push(curr);

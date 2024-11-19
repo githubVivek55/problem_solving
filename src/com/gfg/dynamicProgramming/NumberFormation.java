@@ -7,19 +7,53 @@ public class NumberFormation {
     }
 
     public static int getSum(int X, int Y, int Z) {
-        long ans = 0;
-        for (int i = 0; i <= X; i++) {
-            for (int j = 0; j <= Y; j++) {
-                for (int k = 0; k <= Z; k++) {
-                    String s = "4".repeat(i) + "5".repeat(j) + "6".repeat(k);
-                    if (!s.isEmpty()) {
-                        ans += permutation(s, "") % 1000000007;
+        int N = 101;
+        int mod = (int)1e9 + 7;
+        long[][][] exactsum = new long[N][N][N];
+        long[][][] exactnum = new long[N][N][N];
+        int ans = 0;
+        exactnum[0][0][0] = 1;
+        for (int i = 0; i <= X; ++i)
+        {
+            for (int j = 0; j <= Y; ++j)
+            {
+                for (int k = 0; k <= Z; ++k)
+                {
+                    if (i > 0)
+                    {
+                        exactsum[i][j][k]
+                                += (exactsum[i - 1][j][k] * 10
+                                + 4 * exactnum[i - 1][j][k]) % mod;
+
+                        exactnum[i][j][k]
+                                += exactnum[i - 1][j][k] % mod;
                     }
+                    if (j > 0)
+                    {
+                        exactsum[i][j][k]
+                                += (exactsum[i][j - 1][k] * 10
+                                + 5 * exactnum[i][j - 1][k]) % mod;
+
+                        exactnum[i][j][k]
+                                += exactnum[i][j - 1][k] % mod;
+                    }
+                    if (k > 0)
+                    {
+                        exactsum[i][j][k]
+                                += (exactsum[i][j][k - 1] * 10
+                                + 6 * exactnum[i][j][k - 1]) % mod;
+
+                        exactnum[i][j][k]
+                                += exactnum[i][j][k - 1] % mod;
+                    }
+
+                    ans += exactsum[i][j][k] % mod;
+                    ans %= mod;
                 }
             }
         }
+        return ans;
 
-        return (int) ans%1000000009;
     }
 
     public static long permutation(String str, String ans) {

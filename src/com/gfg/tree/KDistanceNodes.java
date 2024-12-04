@@ -1,7 +1,6 @@
 package com.gfg.tree;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class KDistanceNodes {
     public static void main(String[] args) {

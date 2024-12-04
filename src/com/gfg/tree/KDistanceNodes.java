@@ -14,14 +14,14 @@ public class KDistanceNodes {
         left.left = l2;
         left.right = r2;
         ArrayList<Integer> integers = KDistanceNodes(root, 8, 1);
-        integers.stream().forEach(System.out::println);
+        integers.forEach(System.out::println);
     }
 
     public static ArrayList<Integer> KDistanceNodes(Node root, int target, int k) {
         Map<Integer, Node> parents = new HashMap<>();
         ArrayList<Integer> visited = new ArrayList<>();
         getDepth(root, null, parents);
-        Node targetNode = null;
+        Node targetNode;
         Node node = parents.get(target);
         if (node == null) {
             targetNode = root;
@@ -53,18 +53,6 @@ public class KDistanceNodes {
         queue.forEach(ele -> result.add(ele.data));
         result.sort(Comparator.comparingInt(a -> a));
         return result;
-    }
-
-    public static Node findNode(Node root, int target) {
-        if (root == null)
-            return null;
-
-        if (root.data == target) {
-            return root;
-        }
-        Node lr = findNode(root.left, target);
-        Node rl = findNode(root.right, target);
-        return lr == null ? rl : lr;
     }
 
     private static void getDepth(Node root, Node parent, Map<Integer, Node> parents) {
